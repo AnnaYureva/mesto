@@ -1,8 +1,26 @@
 .profile__description {
+    max-width: 450px;
     display: flex;
     flex-direction: column;
     margin: 22px auto 25px 26px;
-    
+}
+
+@media screen and (max-width: 1170px) {
+    .profile__description {
+        max-width: 380px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .profile__description {
+        max-width: 350px;
+    }
+}
+
+ @media screen and (max-width: 400px) {
+    .profile__description {
+        max-width: 250px;
+    }
 }
 
 @media screen and (max-width: 700px) {

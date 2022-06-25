@@ -4,13 +4,14 @@
   align-self: center;
   border: 2px solid #FFFFFF;
   border-radius: 2px;
-  background-color:#000000;
+  background: transparent;
   background: url(../../../images/add_form.svg) center no-repeat;
 }
 
 .profile__add-button:hover {
 cursor: pointer;
 opacity: 0.6;
+transition: 1.5s;
 }
 
 @media screen and (max-width: 700px) {
@@ -27,6 +28,6 @@ opacity: 0.6;
 
 @media screen and (max-width: 320px) {
   .profile__add-button {
-      width: calc(100% - 2*19px);
+      width: 100%;
   }
 }
