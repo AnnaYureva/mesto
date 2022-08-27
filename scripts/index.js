@@ -29,6 +29,7 @@ profileEditButton.addEventListener('click', openPopup);
 popupCloseButton.addEventListener('click', closePopup);
 formElement.addEventListener('submit', formSubmitHandler);
 
+
 const initialCards = [
     {
       name: 'Северная\u00A0Осетия',
@@ -58,16 +59,25 @@ const initialCards = [
 
   const listElement = document.querySelector('.elements');
   const templateElement = document.querySelector('.template');
-
+  const likeElement = document.querySelector('.elements__like');
 
   function addNewElement(name, photo) {
     const newElement = templateElement.content.cloneNode(true);
     newElement.querySelector('.elements__name').textContent = name;
     newElement.querySelector('.elements__photo').src = photo;
     newElement.querySelector('.elements__photo').setAttribute('alt', name);
+    newElement.querySelector('.elements__like').addEventListener('click', like);
+    
     listElement.prepend(newElement);
   };
 
   initialCards.forEach((element) => {
     addNewElement(element.name, element.photo);
   });
+
+ function like (likeElement) {
+    likeElement.target.classList.toggle('elements__like_active');
+ };
+ 
+
+
