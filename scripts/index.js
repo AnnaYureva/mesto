@@ -33,7 +33,7 @@ formElement.addEventListener('submit', formSubmitHandler);
 const initialCards = [
     {
       name: 'Северная\u00A0Осетия',
-      photo: 'images/ОзероГижгит.jpg',
+      photo: 'images/СевернаяОсетия.jpg',
     },
     {
       name: 'Озеро\u00A0Гижгит',
@@ -60,6 +60,7 @@ const initialCards = [
   const listElement = document.querySelector('.elements');
   const templateElement = document.querySelector('.template');
   const likeElement = document.querySelector('.elements__like');
+  const deleteElement = document.querySelector('element__delete-button');
 
   function addNewElement(name, photo) {
     const newElement = templateElement.content.cloneNode(true);
@@ -67,7 +68,7 @@ const initialCards = [
     newElement.querySelector('.elements__photo').src = photo;
     newElement.querySelector('.elements__photo').setAttribute('alt', name);
     newElement.querySelector('.elements__like').addEventListener('click', like);
-    
+    newElement.querySelector('.element__delete-button').addEventListener('click', removeElement)
     listElement.prepend(newElement);
   };
 
@@ -77,6 +78,11 @@ const initialCards = [
 
  function like (likeElement) {
     likeElement.target.classList.toggle('elements__like_active');
+ };
+ 
+ function removeElement(deleteElement) {
+    const itemElement = deleteElement.target.closest('.elements__item');
+    itemElement.remove()
  };
  
 
