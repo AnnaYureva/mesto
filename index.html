@@ -32,7 +32,7 @@
             <footer class="footer">
                 <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
             </footer>
-            <div class="popup">
+            <div class="popup" id="popup-edit-profile">
                 <div class="popup__container">
                     <button aria-label="Close" type="button" class="popup__close-icon"></button>
                     <h2 class="popup__name">Редактировать&#160;профиль</h2>
@@ -43,7 +43,17 @@
                     </form>
                 </div>
             </div>
-        </div>
+                <div class="popup" id="popup-add-card">
+                    <div class="popup__container">
+                        <button aria-label="Close" type="button" class="popup__close-icon"></button>
+                        <h2 class="popup__name">Новое&#160;место</h2>
+                        <form class="popup__form" name="popup">
+                            <input name="username" type="text" placeholder="Название" class="popup__input popup__input_type_username" />
+                            <input name="profession" type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_profession" />
+                            <button type="submit" class="popup__save-button">Создать</button>
+                        </form>
+                    </div>
+            </div>
         <template class="template">
             <article class="elements__item">
                 <button aria-label="Delete" type="button" class="element__delete-button"></button>
