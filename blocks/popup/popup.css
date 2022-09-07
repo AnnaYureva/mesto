@@ -2,7 +2,7 @@
     display: flex;
     opacity: 0;
     visibility: hidden;
-    transition: visibility 3s, opacity 1s linear;
+    transition: visibility 3s, opacity 200ms linear;
     top: 0;
     left: 0;
     bottom: 0;
