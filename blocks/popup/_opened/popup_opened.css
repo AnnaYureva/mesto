@@ -3,5 +3,4 @@
     visibility: visible;
     display: flex;
     position: absolute;
-    transition: opacity 2s linear;
 }

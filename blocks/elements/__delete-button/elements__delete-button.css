@@ -2,9 +2,10 @@
         background-image: url(../../../images/Trash.svg);
         width: 18px;
         height: 19px;
-        margin-top: 20px;
-        margin-left: 252px;
+        cursor: pointer;
         position: absolute;
+        top: 20px;
+        right: 20px;
         background-color: transparent;
         border: 0;
         padding: 0;
