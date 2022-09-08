@@ -25,7 +25,7 @@ const initialCards = [
   },
 ];
 
-const listElement = document.querySelector(".elements");
+const cardSection = document.querySelector(".elements");
 const templateElement = document.querySelector(".template");
 const likeElement = document.querySelector(".elements__like");
 const deleteElement = document.querySelector("element__delete-button");
@@ -52,24 +52,21 @@ const closeButtons = document.querySelectorAll(".popup__close-icon");
 
 function createCard(name, photo) {
   const newElement = templateElement.content.cloneNode(true);
+  const cardImage = newElement.querySelector(".elements__photo");
   newElement.querySelector(".elements__name").textContent = name;
-  newElement.querySelector(".elements__photo").src = photo;
-  newElement.querySelector(".elements__photo").setAttribute("alt", name);
+  cardImage.src = photo;
+  cardImage.alt = name;
   newElement
     .querySelector(".elements__like")
     .addEventListener("click", toggleLike);
-  newElement
-    .querySelector(".elements__delete-button")
-    .addEventListener("click", removeElement);
-  newElement
-    .querySelector(".elements__photo")
-    .addEventListener("click", () => zoomPopup(name, photo));
+  cardImage.addEventListener("click", removeElement);
+  cardImage.addEventListener("click", () => zoomPopup(name, photo));
   return newElement;
 }
 
 function addNewElement(name, photo) {
   const newElement = createCard(name, photo);
-  listElement.prepend(newElement);
+  cardSection.prepend(newElement);
 }
 
 initialCards.forEach((element) => {
