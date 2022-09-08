@@ -59,7 +59,9 @@ function createCard(name, photo) {
   newElement
     .querySelector(".elements__like")
     .addEventListener("click", toggleLike);
-  cardImage.addEventListener("click", removeElement);
+    newElement 
+     .querySelector(".elements__delete-button") 
+     .addEventListener("click", removeElement); 
   cardImage.addEventListener("click", () => zoomPopup(name, photo));
   return newElement;
 }
