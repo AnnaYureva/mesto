@@ -9,15 +9,15 @@
     border-left: none;
     border-right: none;
     padding-bottom: 13px;
-    margin-bottom: 48px;
+    margin-bottom: 36px;
 }
 
 @media screen and (max-width: 500px) {
     .popup__input {
-margin-bottom: 45px;
+margin-bottom: 33px;
     }
 }
 
 .popup__input:first-child {
-    margin-bottom: 30px;
+    margin-bottom: 17px;
 }
