@@ -43,9 +43,11 @@ const profileProfession = document.querySelector(".profile__profession");
 const placeNameInput = popupAddCard.querySelector(
   ".popup__input_type_username"
 );
+
 const placePhotoInput = popupAddCard.querySelector(
   ".popup__input_type_profession"
 );
+
 const imageZoom = popupZoom.querySelector(".popup__image");
 const imageCaption = popupZoom.querySelector(".popup__figcaption");
 const closeButtons = document.querySelectorAll(".popup__close-icon");
@@ -59,17 +61,17 @@ function createCard(name, photo) {
   newElement
     .querySelector(".elements__like")
     .addEventListener("click", toggleLike);
-    newElement 
-     .querySelector(".elements__delete-button") 
-     .addEventListener("click", removeElement); 
+  newElement
+    .querySelector(".elements__delete-button")
+    .addEventListener("click", removeElement);
   cardImage.addEventListener("click", () => zoomPopup(name, photo));
   return newElement;
-}
+};
 
 function addNewElement(name, photo) {
   const newElement = createCard(name, photo);
   cardSection.prepend(newElement);
-}
+};
 
 initialCards.forEach((element) => {
   addNewElement(element.name, element.photo);
@@ -93,6 +95,7 @@ function removeElement(deleteElement) {
 
 function openPopup(popups) {
   popups.classList.add("popup_opened");
+  popups.addEventListener("click", closePopupOverlay);
 }
 
 profileEditButton.addEventListener("click", () => {
@@ -113,6 +116,7 @@ cardAddButton.addEventListener("click", () => openPopup(popupAddCard));
 
 function closePopup(popups) {
   popups.classList.remove("popup_opened");
+  popups.removeEventListener("click", closePopupOverlay);
 }
 
 function handleCardSubmit(event) {
@@ -129,4 +133,18 @@ popupAddCard.addEventListener("submit", handleCardSubmit);
 closeButtons.forEach((button) => {
   const popup = button.closest(".popup");
   button.addEventListener("click", () => closePopup(popup));
+});
+
+function closePopupOverlay(evt) {
+  if (!evt.target.closest(".popup__container")) {
+    closePopup(evt.target.closest(".popup"));
+  }
+};
+
+document.addEventListener('keydown', function (evt) {
+  if(evt.key === 'Escape') {
+      closePopup(popupEditProfile);
+      closePopup(popupAddCard);
+      closePopup(popupZoom);
+  }
 });

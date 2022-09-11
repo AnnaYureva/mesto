@@ -1,4 +1,4 @@
-la<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
     <head>
         <meta charset="UTF-8" />
@@ -25,8 +25,7 @@ la<!DOCTYPE html>
                     </div>
                     <button aria-label="Add" type="button" class="profile__add-button"></button>
                 </section>
-                <section class="elements">   
-                </section>
+                <section class="elements"></section>
             </main>
             <footer class="footer">
                 <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
@@ -35,43 +34,43 @@ la<!DOCTYPE html>
                 <div class="popup__container">
                     <button aria-label="Close" type="button" class="popup__close-icon"></button>
                     <h2 class="popup__name">Редактировать&#160;профиль</h2>
-                    <form class="popup__form" name="popup" novalidate>  
-                        <input id="popup-username" name="username" type="text" class="popup__input popup__input_type_username" minlength="2" maxlength="40" required/>
-                        <span id = "popup-username-error" class = "popup__error"></span>
-                        <input id="popup-profession" name="profession" type="text" class="popup__input popup__input_type_profession" minlength="2" maxlength="200" required/>
-                        <span id = "popup-profession-error" class = "popup__error"></span>
+                    <form class="popup__form" name="popup" novalidate>
+                        <input id="popup-username" name="username" type="text" class="popup__input popup__input_type_username" minlength="2" maxlength="40" required />
+                        <span id="popup-username-error" class="popup__error"></span>
+                        <input id="popup-profession" name="profession" type="text" class="popup__input popup__input_type_profession" minlength="2" maxlength="200" required />
+                        <span id="popup-profession-error" class="popup__error"></span>
                         <button type="submit" class="popup__save-button">Сохранить</button>
                     </form>
                 </div>
             </div>
-                <div class="popup" id="popup-add-card">
-                    <div class="popup__container">
-                        <button aria-label="Close" type="button" class="popup__close-icon"></button>
-                        <h2 class="popup__name">Новое&#160;место</h2>
-                        <form class="popup__form" name="popup" novalidate>
-                            <input id="popup-place" name="username" type="text" placeholder="Название" class="popup__input popup__input_type_username" minlength="2" maxlength="30" required/>
-                            <span id = "popup-place-error" class = "popup__error"></span>
-                            <input id="popup-link" name="profession" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_type_profession" required/>
-                            <span id = "popup-link-error" class = "popup__error"></span>
-                            <button type="submit" class="popup__save-button">Создать</button>
-                        </form>
-                    </div>
+            <div class="popup" id="popup-add-card">
+                <div class="popup__container">
+                    <button aria-label="Close" type="button" class="popup__close-icon"></button>
+                    <h2 class="popup__name">Новое&#160;место</h2>
+                    <form class="popup__form" name="popup" novalidate>
+                        <input id="popup-place" name="username" type="text" placeholder="Название" class="popup__input popup__input_type_username" minlength="2" maxlength="30" required />
+                        <span id="popup-place-error" class="popup__error"></span>
+                        <input id="popup-link" name="profession" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_type_profession" required />
+                        <span id="popup-link-error" class="popup__error"></span>
+                        <button type="submit" class="popup__save-button">Создать</button>
+                    </form>
                 </div>
-                <div class="popup" id="popup-image">
-                    <div class = "popup__figure">
-                        <img class = "popup__image" src="#" alt="#">
-                        <p class = "popup__figcaption"></p>
-                        <button aria-label="Close" type="button" class="popup__close-icon"></button>
-                    </div>
+            </div>
+            <div class="popup" id="popup-image">
+                <div class="popup__figure">
+                    <img class="popup__image" src="#" alt="#" />
+                    <p class="popup__figcaption"></p>
+                    <button aria-label="Close" type="button" class="popup__close-icon"></button>
                 </div>
-        </div>   
+            </div>
+        </div>
         <template class="template">
             <article class="elements__item">
                 <button aria-label="Delete" type="button" class="elements__delete-button"></button>
-                <img class="elements__photo" src="#" alt="#"/>
+                <img class="elements__photo" src="#" alt="#" />
                 <div class="elements__description">
                     <h2 class="elements__name"></h2>
-                    <button aria-label="Like" type="button" class="elements__like"> </button>
+                    <button aria-label="Like" type="button" class="elements__like"></button>
                 </div>
             </article>
         </template>
