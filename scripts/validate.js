@@ -38,17 +38,17 @@ const hasError = (inputs) => {
 
 function toggleButton(button, inputs, config) {
    if (hasError(inputs)) {
+      button.classList.add(config.inactiveButtonClass)
       button.disabled = true
    } else {
-      button.classList.add(config.submitButtonSelector)
+      button.classList.remove(config.inactiveButtonClass)
       button.disabled = false
    }
 }
 
-
 function setHandlers(form, config) {
  const inputs = Array.from(form.querySelectorAll(config.inputSelector));
- const button = Array.from(document.querySelectorAll(config.inactiveButtonClass));
+ const button = form.querySelector(config.submitButtonSelector);
  toggleButton(button, inputs, config)
  inputs.forEach((input) => {
     input.addEventListener('input', () => {
