@@ -8,13 +8,14 @@ const validationConfig = {
 };
 
 function validateInput(form, input, config) {
-   const error = form.querySelector(`.${input.id}-error`);
+   const error = form.querySelector(`#${input.id}-error`);
  if (!input.validity.valid) {
     input.classList.add(config.inputErrorClass)
+    input.classList.add(config.errorClass)
     error.textContent = input.validationMessage
  } else {
     input.classList.remove(config.inputErrorClass)
-    error.textContent = ''
+    error.textContent = '';
  };
 };
 
