@@ -17,20 +17,24 @@ function validateInput(form, input, config) {
     error.textContent = ''
  };
 };
+
 function setHandlers(form, config) {
- const inputs = Array.from(form.querySelector(config.inputSelector));
+ const inputs = Array.from(form.querySelectorAll(config.inputSelector));
  inputs.forEach((input) => {
     input.addEventListener('input', () => {
         validateInput(form, input, config)
     });
  });
 };
-function enableValidation(config) {
- const form = document.querySelector(config.formSelector);
 
+function enableValidation(config) {
+ const formList = Array.from(document.querySelectorAll(config.formSelector));
+ formList.forEach((form) => {
  form.addEventListener('submit', (evt) => {
     evt.preventDefault()
  });
  setHandlers(form, config);
+});
 };
+
 enableValidation(validationConfig);
