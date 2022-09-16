@@ -5,5 +5,8 @@
     line-height: 15px;
     color: #FF0000;
     display: none;
-    margin-top: 5px;
+    position: absolute;
+    bottom: -15px;
+    display: block;
+    min-height: 30px;
 }
