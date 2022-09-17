@@ -51,7 +51,7 @@ const placePhotoInput = popupAddCard.querySelector(
 const imageZoom = popupZoom.querySelector(".popup__image");
 const imageCaption = popupZoom.querySelector(".popup__figcaption");
 const closeButtons = document.querySelectorAll(".popup__close-icon");
-const button = document.querySelector(".popup__save-button");
+const cardFormsSubmitButton = popupAddCard.querySelector(".popup__save-button");
 
 function createCard(name, photo) {
   const newElement = templateElement.content.cloneNode(true);
@@ -66,6 +66,8 @@ function createCard(name, photo) {
     .querySelector(".elements__delete-button")
     .addEventListener("click", removeElement);
   cardImage.addEventListener("click", () => zoomPopup(name, photo));
+  cardFormsSubmitButton.classList.add("popup__save-button_disabled");
+  cardFormsSubmitButton.disabled = true;
   return newElement;
 }
 
@@ -116,9 +118,7 @@ function handleProfileFormSubmit(event) {
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 cardAddButton.addEventListener(
   "click",
-  () => openPopup(popupAddCard),
-  button.classList.add("popup__save-button_disabled"),
-  (button.disabled = true)
+  () => openPopup(popupAddCard)
 );
 
 function closePopup(popups) {
