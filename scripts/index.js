@@ -66,8 +66,6 @@ function createCard(name, photo) {
     .querySelector(".elements__delete-button")
     .addEventListener("click", removeElement);
   cardImage.addEventListener("click", () => zoomPopup(name, photo));
-  cardFormsSubmitButton.classList.add("popup__save-button_disabled");
-  cardFormsSubmitButton.disabled = true;
   return newElement;
 }
 
@@ -133,6 +131,8 @@ function handleCardSubmit(event) {
   const photo = placePhotoInput.value;
   addNewElement(name, photo);
   event.target.reset();
+  cardFormsSubmitButton.classList.add("popup__save-button_disabled");
+  cardFormsSubmitButton.disabled = true;
   closePopup(popupAddCard);
 }
 
