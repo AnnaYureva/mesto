@@ -1,7 +1,7 @@
 export const initialCards = [
   {
     name: "Северная\u00A0Осетия",
-    photo: "images/СевернаяОсетия.jpg",
+    photo: 'images/СевернаяОсетия.jpg',
   },
   {
     name: "Озеро\u00A0Гижгит",
