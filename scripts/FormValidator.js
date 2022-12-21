@@ -2,6 +2,12 @@ export class FormValidator {
   constructor(validationConfig, form) {
     this._validationConfig = validationConfig;
     this._form = form;
+    this._inputs = Array.from(
+      this._form.querySelectorAll(this._validationConfig.inputSelector)
+    );
+    this._button = this._form.querySelector(
+      this._validationConfig.submitButton
+    );
   }
 
   _setInputError(input) {
@@ -27,34 +33,28 @@ export class FormValidator {
     }
   }
 
-  _hasError = (inputs) => {
-    return inputs.some((input) => {
+  _hasError() {
+    return this._inputs.some((input) => {
       return !input.validity.valid;
     });
-  };
+  }
 
-  _toggleButton(button, inputs) {
-    if (this._hasError(inputs)) {
-      button.classList.add(this._validationConfig.inactiveButtonClass);
-      button.disabled = true;
+  toggleButton() {
+    if (this._hasError()) {
+      this._button.classList.add(this._validationConfig.inactiveButtonClass);
+      this._button.disabled = true;
     } else {
-      button.classList.remove(this._validationConfig.inactiveButtonClass);
-      button.disabled = false;
+      this._button.classList.remove(this._validationConfig.inactiveButtonClass);
+      this._button.disabled = false;
     }
   }
 
   _setHandlers() {
-    const inputs = Array.from(
-      this._form.querySelectorAll(this._validationConfig.inputSelector)
-    );
-    const button = this._form.querySelector(
-      this._validationConfig.submitButton
-    );
-    this._toggleButton(button, inputs);
-    inputs.forEach((input) => {
+    this.toggleButton();
+    this._inputs.forEach((input) => {
       input.addEventListener("input", () => {
         this._validateInput(input);
-        this._toggleButton(button, inputs);
+        this.toggleButton();
       });
     });
   }
