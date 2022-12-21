@@ -1,4 +1,4 @@
-export const initialCards = [
+const initialCards = [
   {
     name: "Северная\u00A0Осетия",
     photo: 'images/СевернаяОсетия.jpg',
@@ -24,3 +24,14 @@ export const initialCards = [
     photo: "images/Кабардино-Балкария-min.jpg",
   },
 ];
+
+const validationConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButton: ".popup__save-button",
+  inactiveButtonClass: "popup__save-button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
+
+export { initialCards, validationConfig }
