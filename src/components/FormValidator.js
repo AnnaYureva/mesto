@@ -25,7 +25,6 @@ export class FormValidator {
   }
 
   _validateInput(input) {
-    const error = this._form.querySelector(`#${input.id}-error`);
     if (!input.validity.valid) {
       this._setInputError(input);
     } else {
@@ -61,5 +60,10 @@ export class FormValidator {
 
   enableValidation() {
     this._setHandlers();
+  }
+
+  disableButton(){
+    this._button.classList.add(this._validationConfig.inactiveButtonClass);
+    this._button.disabled = true;
   }
 }
