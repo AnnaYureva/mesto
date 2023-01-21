@@ -19,12 +19,14 @@ import {
 import { FormValidator } from "../components/FormValidator.js";
 
 const createCard = (name, photo) => {
-  const card = new Card({
-    name: name,
-    photo: photo,
-    templateSelector: ".template",
-    handleImageClick: handleCardClick,
-  });
+  const card = new Card(
+    {
+      name: name,
+      photo: photo,
+    },
+    ".template",
+    handleCardClick
+  );
   return card.generateCard();
 };
 
