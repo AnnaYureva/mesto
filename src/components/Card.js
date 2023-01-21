@@ -1,9 +1,9 @@
 export default class Card {
-  constructor(name, photo, templateSelector, openPopup) {
+  constructor( {name, photo, templateSelector, handleImageClick} ) {
     this._name = name;
     this._photo = photo;
     this._templateSelector = templateSelector;
-    this._openPopup = openPopup;
+    this._handleImageClick = handleImageClick;
   }
 
   _getTemplate() {
@@ -14,35 +14,36 @@ export default class Card {
     return cardElement;
   }
 
-  _toggleLike(event) {
+  _handleLikeClick(event) {
     event.target.classList.toggle("elements__like_active");
   }
 
   _removeElement() {
     this._element.remove();
+    this._element = null;
   }
 
   _handleZoomPopup() {
-    this._openPopup(this._name, this._photo);
+    this._handleImageClick(this._name, this._photo);
   }
 
-  _setEventListeners(likeElement, deleteElement, imageZoom) {
-    imageZoom.addEventListener("click", () => this._handleZoomPopup());
-    likeElement.addEventListener("click", this._toggleLike);
-    deleteElement.addEventListener("click", () => this._removeElement());
+  _setEventListeners() {
+    this._imageZoom.addEventListener("click", () => this._handleZoomPopup());
+    this._likeElement.addEventListener("click", this._toggleLike);
+    this._deleteElement.addEventListener("click", () => this._removeElement());
   }
 
   generateCard() {
     this._element = this._getTemplate();
-    const imageZoom = this._element.querySelector(".elements__photo");
-    imageZoom.src = this._photo;
-    imageZoom.alt = this._name;
+    this._imageZoom = this._element.querySelector(".elements__photo");
+    this._imageZoom.src = this._photo;
+    this._imageZoom.alt = this._name;
     this._element.querySelector(".elements__name").textContent = this._name;
-    const likeElement = this._element.querySelector(".elements__like");
-    const deleteElement = this._element.querySelector(
+    this._likeElement = this._element.querySelector(".elements__like");
+    this._deleteElement = this._element.querySelector(
       ".elements__delete-button"
     );
-    this._setEventListeners(likeElement, deleteElement, imageZoom);
+    this._setEventListeners(this._likeElement, this._deleteElement, this._imageZoom);
     return this._element;
   }
 }
