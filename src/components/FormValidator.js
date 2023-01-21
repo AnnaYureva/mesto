@@ -40,8 +40,7 @@ export class FormValidator {
 
   toggleButton() {
     if (this._hasError()) {
-      this._button.classList.add(this._validationConfig.inactiveButtonClass);
-      this._button.disabled = true;
+      this.disableButton();
     } else {
       this._button.classList.remove(this._validationConfig.inactiveButtonClass);
       this._button.disabled = false;
@@ -62,7 +61,7 @@ export class FormValidator {
     this._setHandlers();
   }
 
-  disableButton(){
+  disableButton() {
     this._button.classList.add(this._validationConfig.inactiveButtonClass);
     this._button.disabled = true;
   }

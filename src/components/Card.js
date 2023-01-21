@@ -1,5 +1,5 @@
 export default class Card {
-  constructor( {name, photo, templateSelector, handleImageClick} ) {
+  constructor({ name, photo }, templateSelector, handleImageClick) {
     this._name = name;
     this._photo = photo;
     this._templateSelector = templateSelector;
@@ -29,7 +29,7 @@ export default class Card {
 
   _setEventListeners() {
     this._imageZoom.addEventListener("click", () => this._handleZoomPopup());
-    this._likeElement.addEventListener("click", this._toggleLike);
+    this._likeElement.addEventListener("click", this._handleLikeClick);
     this._deleteElement.addEventListener("click", () => this._removeElement());
   }
 
@@ -43,7 +43,7 @@ export default class Card {
     this._deleteElement = this._element.querySelector(
       ".elements__delete-button"
     );
-    this._setEventListeners(this._likeElement, this._deleteElement, this._imageZoom);
+    this._setEventListeners();
     return this._element;
   }
 }
