@@ -60,6 +60,8 @@ const popupWithProfile = new PopupWithForm(
 );
 popupWithProfile.setEventListeners();
 
+
+
 new FormValidator(
   validationConfig,
   popupEditProfile.querySelector(".popup__form")
