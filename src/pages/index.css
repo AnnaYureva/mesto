@@ -25,12 +25,8 @@
 @import url(../blocks/elements/__like/elements__like.css);
 @import url(../blocks/elements/__like/_active/elements__like_active.css);
 @import url(../blocks/elements/__delete-button/elements__delete-button.css);
-<<<<<<< HEAD
 @import url(../blocks/elements/__like-container/elements__like-container.css);
 @import url(../blocks/elements/__likes-count/elements__likes-count.css);
-=======
-@import url(../blocks/elements/__likes-container/elements__likes-container.css);
->>>>>>> b80c40f36face1e328d4008697f16010a4e6382c
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
