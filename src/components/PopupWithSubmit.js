@@ -21,4 +21,7 @@ export default class PopupWithSubmit extends Popup {
     super.setEventListeners();
   }
 }
+<<<<<<< HEAD
   
+=======
+>>>>>>> b80c40f36face1e328d4008697f16010a4e6382c

@@ -36,7 +36,6 @@ const api = new Api({
   },
 });
 
-
 let cardsSection;
 
 Promise.all([api.getUserData(), api.getInitialCards()])
@@ -106,9 +105,9 @@ const createCard = (item) => {
         });
       }
     }
-    );
-    return card.generateCard();
-  };
+  );
+  return card.generateCard();
+};
 
 //Замена фотографии профиля
 
@@ -214,6 +213,7 @@ const popupEditAvatarFormValidator = new FormValidator(
   popupAvatar.querySelector(".popup__form")
 );
 popupEditAvatarFormValidator.enableValidation();
+
 
 //Слушатели событий
 profileEditButton.addEventListener("click", () => {
