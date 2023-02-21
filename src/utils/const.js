@@ -47,7 +47,7 @@ const cardAddButton = document.querySelector(".profile__add-button");
 const popupEditProfile = document.querySelector("#popup-edit-profile");
 const popupAddCard = document.querySelector("#popup-add-card");
 const avatarEditButton = document.querySelector(".profile__image-edit");
-const popupAvatar = document.querySelector("#popup-avatar");
+const popupAvatar = document.querySelector("#popup-avatar-change");
 
 export {
   initialCards,

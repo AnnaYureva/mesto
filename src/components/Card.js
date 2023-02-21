@@ -40,7 +40,6 @@ _handleZoomPopup() {
 _setEventListeners() {
   this._imageZoom.addEventListener("click", () => this._handleZoomPopup());
   this._likeElement.addEventListener("click", () => this._handleLikeClick());
-  this._likeElement.addEventListener("click", this._handleLikeClick);
   this._deleteElement.addEventListener("click", () => this._removeElement());
 }
 

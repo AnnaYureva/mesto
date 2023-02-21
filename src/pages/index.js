@@ -38,9 +38,11 @@ const api = new Api({
 
 
 let cardsSection;
+let userId;
 
 Promise.all([api.getUserData(), api.getInitialCards()])
   .then(([userData, cards]) => {
+    userId = userData._id
     userInfo.setUserInfo({
       profileName: userData.name,
       profileInfo: userData.about,
@@ -53,8 +55,8 @@ Promise.all([api.getUserData(), api.getInitialCards()])
         items: cards,
         renderer: (items) => {
           let isLikedByMe = false;
-          items.likes.forEach((user) => {
-            if (user._id === "0cabfa73ba6bbf6612f204e6") {
+          items.likes.forEach((userId) => {
+            if (userId === "0cabfa73ba6bbf6612f204e6") {
               isLikedByMe = true;
             }
           });
@@ -112,7 +114,7 @@ const createCard = (item) => {
 
 //Замена фотографии профиля
 
-const popupEditAvatar = new PopupWithForm("#popup-avatar", handleEditAvatar);
+const popupEditAvatar = new PopupWithForm("#popup-avatar-change", handleEditAvatar);
 popupEditAvatar.setEventListeners();
 
 function handleEditAvatar(inputValues) {
@@ -121,6 +123,8 @@ function handleEditAvatar(inputValues) {
     .saveAvatar({ avatar: inputValues.avatar })
     .then((res) => {
       userInfo.setProfileImage(res.avatar);
+    })
+    .then(() => {
       popupEditAvatar.close();
     })
     .catch((err) => {
@@ -190,6 +194,8 @@ function handleDeleteCard(cardId, cardElementRemove) {
     .deleteCard(cardId)
     .then(() => {
       cardElementRemove();
+    })
+    .then(() => {
       popupDelete.close();
     })
     .catch((err) => {
@@ -203,6 +209,7 @@ new FormValidator(
   validationConfig,
   popupEditProfile.querySelector(".popup__form")
 ).enableValidation();
+
 const popupAddCardValidator = new FormValidator(
   validationConfig,
   popupAddCard.querySelector(".popup__form")
@@ -216,6 +223,7 @@ const popupEditAvatarFormValidator = new FormValidator(
 popupEditAvatarFormValidator.enableValidation();
 
 //Слушатели событий
+
 profileEditButton.addEventListener("click", () => {
   const info = userInfo.getUserInfo();
   popupWithProfile.setInputValues({
