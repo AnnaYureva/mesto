@@ -55,8 +55,8 @@ Promise.all([api.getUserData(), api.getInitialCards()])
         items: cards,
         renderer: (items) => {
           let isLikedByMe = false;
-          items.likes.forEach((userId) => {
-            if (userId) {
+          items.likes.forEach((user) => {
+            if (user._id === userId) {
               isLikedByMe = true;
             }
           });
