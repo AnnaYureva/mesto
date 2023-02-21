@@ -56,23 +56,22 @@ Promise.all([api.getUserData(), api.getInitialCards()])
         renderer: (items) => {
           let isLikedByMe = false;
           items.likes.forEach((userId) => {
-            if (userId === "0cabfa73ba6bbf6612f204e6") {
+            if (userId) {
               isLikedByMe = true;
             }
           });
-
           const card = createCard({
             id: items._id,
             name: items.name,
             photo: items.link,
-            myCard: items.owner._id === "0cabfa73ba6bbf6612f204e6",
+            myCard: items.owner._id === userId,
             likesCount: items.likes.length,
             isLiked: isLikedByMe,
           });
           cardsSection.appendItem(card);
         },
       },
-
+      
       cardsContainer
     );
 

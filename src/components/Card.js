@@ -85,6 +85,7 @@ generateCard() {
     ".elements__likes-count"
   );
   this._handleLikesCount();
+
   if (!this._myCard) {
     this._deleteElement.remove();
     this._deleteElement = null;
