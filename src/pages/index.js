@@ -36,13 +36,12 @@ const api = new Api({
   },
 });
 
-
 let cardsSection;
 let userId;
 
 Promise.all([api.getUserData(), api.getInitialCards()])
   .then(([userData, cards]) => {
-    userId = userData._id
+    userId = userData._id;
     userInfo.setUserInfo({
       profileName: userData.name,
       profileInfo: userData.about,
@@ -53,25 +52,26 @@ Promise.all([api.getUserData(), api.getInitialCards()])
     cardsSection = new Section(
       {
         items: cards,
-        renderer: (items) => {
+        renderer: (item) => {
           let isLikedByMe = false;
-          items.likes.forEach((user) => {
+          item.likes.forEach((user) => {
             if (user._id === userId) {
               isLikedByMe = true;
             }
+            //ваши комментарии 'можно лучше' тоже обязуюсь внести, но пока не все поняла
           });
           const card = createCard({
-            id: items._id,
-            name: items.name,
-            photo: items.link,
-            myCard: items.owner._id === userId,
-            likesCount: items.likes.length,
+            id: item._id,
+            name: item.name,
+            photo: item.link,
+            myCard: item.owner._id === userId,
+            likesCount: item.likes.length,
             isLiked: isLikedByMe,
           });
           cardsSection.appendItem(card);
         },
       },
-      
+
       cardsContainer
     );
 
@@ -107,13 +107,16 @@ const createCard = (item) => {
         });
       }
     }
-    );
-    return card.generateCard();
-  };
+  );
+  return card.generateCard();
+};
 
 //Замена фотографии профиля
 
-const popupEditAvatar = new PopupWithForm("#popup-avatar-change", handleEditAvatar);
+const popupEditAvatar = new PopupWithForm(
+  "#popup-avatar-change",
+  handleEditAvatar
+);
 popupEditAvatar.setEventListeners();
 
 function handleEditAvatar(inputValues) {
@@ -152,6 +155,9 @@ function handleAddCardForm(inputValues) {
       });
       cardsSection.prependItem(card);
     })
+    .then(() => {
+      popupCardAdd.close();
+    })
     .catch((err) => {
       console.log(`Ошибка при добавлении карточки: ${err}`);
     })
@@ -176,6 +182,9 @@ function handleEditProfileForm(input) {
         profileInfo: input.profession,
       });
     })
+    .then(() => {
+      popupWithProfile.close();
+    })
     .catch((err) => {
       console.log(`Ошибка при редактировании профиля: ${err}`);
     })
@@ -188,13 +197,11 @@ const popupDelete = new PopupWithSubmit(
 );
 popupDelete.setEventListeners();
 
-function handleDeleteCard(cardId, cardElementRemove) {
+function handleDeleteCard(cardId, removeCardElement) {
   api
     .deleteCard(cardId)
     .then(() => {
-      cardElementRemove();
-    })
-    .then(() => {
+      removeCardElement();
       popupDelete.close();
     })
     .catch((err) => {
